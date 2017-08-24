@@ -1,3 +1,4 @@
 # lol-draw
-An elementary paint application 
-Created using JS with ♥
+An elementary paint application .
+
+Created using JS with&emsp;:heart: 
