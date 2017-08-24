@@ -11,7 +11,7 @@ var s=[];
 var col=[];
 var m=0;
 var mcc=0;
-function start() {
+function start(){
     if(mode==0) {
         // console.log(mode);
         c.onmousemove=function(event) {if(mode==0)draw(event);else(start())};
@@ -39,6 +39,7 @@ function setmode(type) {
 
 function setcolor(cr) {
     color=cr;
+    console.log(color);
 }
 
 function sets(s) {
@@ -48,16 +49,26 @@ function sets(s) {
 function draw(event) {
     mouseX=event.clientX;
     mouseY=event.clientY;
+    mc.push(mouseX);
+    mc.push(mouseY);
+    col.push(color);
     console.log(mouseX);
     console.log(mouseY);
-    if (shape=='c')
+    if (shape=='c') {
+        s.push(0);
         circle();
-    else if(shape=='sq')
+    }
+    else if(shape=='sq') {
+        s.push(1);
         square();
-    else if(shape=='er')
+    }
+    else if(shape=='er') {
+        s.push(2);
         erase();
+    }
 }
 function circle() {
+    console.log('circle',mouseX,mouseY);
     ctx.fillStyle=color;
     ctx.beginPath();
     ctx.arc(mouseX-200,mouseY-95,25,0,2*Math.PI);
@@ -73,6 +84,7 @@ function erase() {
     ctx.clearRect(mouseX-230,mouseY-115,50,50);
 }
 function clearcnvs() {
+    console.log('clear');
     ctx.clearRect(0,0,1400,600);
 }
 
@@ -101,5 +113,3 @@ function clearcnvs() {
 //     }
 //     mcc=0;
 // }
-
-// start();
