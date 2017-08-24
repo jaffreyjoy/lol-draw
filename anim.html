@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            lol_draw app
+        </title>
+        <style>
+            .c{
+                margin-top: 3px;
+                width: 70px;
+                height: 70px;
+                border-radius: 50px;
+                font-family: Lato;
+                font-weight: bolder;
+                color:#333027;
+                background-color: #B8B08D;
+            }
+            .r{
+                margin-top: 3px;
+                width: 68px;
+                height: 68px;
+                font-family: Lato;
+                font-weight: bolder;
+                color:#333027;
+                background-color: #B8B08D;
+            }
+            .cp {
+                margin-top: 5px;
+                width:30px;
+                height: 30px;
+            }
+            .er {
+                background: url("eicon.png");
+                width:50px;
+                height:50px;
+            }
+            .cl {
+                background: url("clr.png");
+                width:50px;
+                height:50px;
+            }
+            .erc {
+                margin-top: 20px;
+                margin-left: 690px;
+            }
+            .rdo {
+                width: 20px;
+                height: 20px;
+                -webkit-filter: drop-shadow(0px 2px 3px black);
+            }
+            label {
+                font-family: Lato;
+                font-size: 150%;
+                font-weight: bolder;
+            }
+            #myCanvas {
+                margin-top: 20px;
+                margin-left: 200px;
+            }
+            .title{
+                font-family: "Lato";
+                font-weight: bolder;
+                font-size:300%;
+                color: #123456;
+                border-bottom: 2px solid #123456;
+                /*width:220px;*/
+                text-align: center;
+                padding-bottom: 15px;
+                margin-top: auto;
+                /*-webkit-filter: drop-shadow(5px 5px 3px grey);*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="title">
+            lol_draw ver 0.1
+        </div>
+        <canvas id="myCanvas"  width="1100" height="470" style="border:2px solid black"></canvas>
+        <script type="text/javascript">
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var shape;
+        var color="#004346";
+        var mouseX=0;
+        var mouseY=0;
+        var mode=1;
+        var type;
+        function start(){
+            if(mode==0) {
+                // console.log(mode);
+                c.onmousemove=function(event) {if(mode==0)draw(event);else(start())};
+                // setInterval(function(){c.onmousedown=function(event) { c.onmousedown=function(event) {if(mode==0)draw(event);else(start())}},10);
+                console.log(mode);
+            }
+            else {
+                // console.log(mode);
+                c.onclick=function(event) {draw(event)};
+            }
+        }
+
+        function setmode(type) {
+            if (type==1) {
+                mode=1;
+                console.log(mode);
+                start();
+            }
+            else {
+                mode=0;
+                console.log(mode);
+                start();
+            }
+        }
+
+        function setcolor(cr) {
+            color=cr;
+        }
+
+        function sets(s) {
+            console.log(s);
+            shape=s;
+        }
+        function draw(event) {
+            mouseX=event.clientX;
+            mouseY=event.clientY;
+            console.log(mouseX);
+            console.log(mouseY);
+            if (shape=='c')
+                circle();
+            else if(shape=='sq')
+                square();
+            else if(shape=='er')
+                erase();
+        }
+        function circle() {
+            ctx.fillStyle=color;
+            ctx.beginPath();
+            ctx.arc(mouseX-200,mouseY-95,25,0,2*Math.PI);
+            ctx.lineWidth = 0;
+            ctx.fill();
+            // ctx.stroke();
+        }
+        function square() {
+            ctx.fillStyle=color;
+            ctx.fillRect(mouseX-230,mouseY-115,50,50);
+        }
+        function erase() {
+            ctx.clearRect(mouseX-230,mouseY-115,50,50);
+        }
+        function clearcnvs() {
+            ctx.clearRect(0,0,1400,600);
+        }
+
+        // start();
+
+        </script>
+        <center>
+            <input class="rdo" onclick="setmode(1)" type="radio" name="mode"><label>Click</label></input>
+            <input class="rdo" onclick="setmode(0)" type="radio" name="mode"><label>Hover</label></input>&emsp;&emsp;&emsp;&emsp;&emsp;
+            <button class="c" onclick="sets('c')" type="button" name="Circle">CIRCLE</button>&emsp;
+            <button class="r" onclick="sets('sq')" type="button" name="Square">SQUARE</button>&emsp;&emsp;&emsp;&emsp;&emsp;
+            <img class="cp" src="lblue.png" onclick="setcolor('#449DD1')">
+            <img class="cp" src="blue.png" onclick="setcolor('#004777')">
+            <img class="cp" src="violet.png" onclick="setcolor('#581845')">
+            <img class="cp" src="yellow.png" onclick="setcolor('#FFC300')">
+            <img class="cp" src="orange.png" onclick="setcolor('#C44536')">
+            <img class="cp" src="maroon.png" onclick="setcolor('#C70039')">
+        </center>
+        <div class="erc">
+            <button class="er" onclick="sets('er')" type="button"></button>&emsp;
+            <button class="cl" onclick="clearcnvs()" type="button" name="Circle"></button>
+        </div>
+
+    </body>
+</html>
