@@ -71,4 +71,30 @@ function clearcnvs() {
     ctx.clearRect(0,0,1400,600);
 }
 
+// function pausecomp(ms) {
+// ms += new Date().getTime();
+// while (new Date() < ms){}
+// }
+
+// function rd() {
+//     clearcnvs();
+//     for (var i = 0; i < s.length; i++) {
+//         console.log(i);
+//         mouseX=mc[mcc]+50;
+//         mouseY=mc[mcc+1]+50;
+//         console.log(mouseX,mouseY);
+//         mcc=mcc+2;
+//         console.log(col[i]);
+//         color=col[i];
+//         if(s[i]==0)
+//             circle();
+//         else if(s[i]==1)
+//             square();
+//         else if(s[i]==2)
+//             erase();
+//         pausecomp(2 00);
+//     }
+//     mcc=0;
+// }
+
 // start();
