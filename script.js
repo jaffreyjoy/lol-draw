@@ -6,6 +6,11 @@ var mouseX=0;
 var mouseY=0;
 var mode=1;
 var type;
+var mc=[];
+var s=[];
+var col=[];
+var m=0;
+var mcc=0;
 function start() {
     if(mode==0) {
         // console.log(mode);
