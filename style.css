@@ -23,12 +23,12 @@
     height: 30px;
 }
 .er {
-    background: url("eicon.png");
+    background: url("img/eicon.png");
     width:50px;
     height:50px;
 }
 .cl {
-    background: url("clr.png");
+    background: url("img/clr.png");
     width:50px;
     height:50px;
 }
