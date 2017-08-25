@@ -11,6 +11,8 @@ var s=[];
 var col=[];
 var m=0;
 var mcc=0;
+var i=0;
+var stp;
 function start(){
     if(mode==0) {
         // console.log(mode);
@@ -93,23 +95,37 @@ function clearcnvs() {
 // while (new Date() < ms){}
 // }
 
-// function rd() {
-//     clearcnvs();
-//     for (var i = 0; i < s.length; i++) {
-//         console.log(i);
-//         mouseX=mc[mcc]+50;
-//         mouseY=mc[mcc+1]+50;
-//         console.log(mouseX,mouseY);
-//         mcc=mcc+2;
-//         console.log(col[i]);
-//         color=col[i];
-//         if(s[i]==0)
-//             circle();
-//         else if(s[i]==1)
-//             square();
-//         else if(s[i]==2)
-//             erase();
-//         pausecomp(2 00);
-//     }
-//     mcc=0;
+// function sleep(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
 // }
+
+function rd() {
+    clearcnvs();
+        stp=setInterval(function () {
+        // for (var i = 0; i < s.length; i++) {
+        console.log(i);
+        mouseX=mc[mcc];
+        mouseY=mc[mcc+1];
+        console.log(mouseX,mouseY);
+        mcc=mcc+2;
+        console.log(col[i]);
+        color=col[i];
+        if(s[i]==0)
+            circle();
+        else if(s[i]==1)
+            square();
+        else if(s[i]==2)
+            erase();
+        i++;
+        // }
+        if(i>=s.length) {
+            i=0;
+            mcc=0;
+            stopinterval();
+        }
+    },100);
+}
+
+function stopinterval (){
+    clearInterval(stp);
+}
