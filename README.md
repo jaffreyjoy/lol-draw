@@ -1,6 +1,6 @@
 # lol-draw
 An elementary paint application .
-Check out the demo [here](https://jaffrey98.github.io/lol-draw/)
+Check out the demo [here](https://jaffreyjoy.github.io/lol-draw/)
 
 Created using JS with&emsp;:heart: 
 
